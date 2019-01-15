@@ -1,4 +1,6 @@
 import { Pet } from './../src/pet';
+import { Hamster } from './../src/hamster';
+import { Cat } from './../src/cat';
 
 describe('Pet', function(){
   let snuggs = new Pet("Snuggs");
@@ -37,6 +39,35 @@ describe('Pet', function(){
   it('should check to see if pet dies of anything', function() {
     jasmine.clock().tick(100001);
     expect(snuggs.deathOfPet()).toEqual('Your pet committed suicide.');
+  });
+
+  it('should check to see if Hamster can inherit properties of pet', function() {
+    const name = "Sally";
+    let newPet = new Pet("bob");
+    let newAnimal = new Hamster(name);
+    expect(newAnimal.returnValue()).toEqual(30);
+  });
+
+  it('should check to see if Hamster can inherit function from pet', function() {
+    const name = "Sally";
+    let newPet = new Pet("bob");
+    let newAnimal = new Hamster(name);
+    newAnimal.feedHamster();
+    expect(newAnimal.hunger).toEqual(15);
+  });
+
+  it('should check to see if Hamster can inherit function from pet with varying property inputs', function() {
+    const name = "Sally";
+    let newPet = new Pet("bob");
+    let newAnimal = new Hamster(name);
+    newAnimal.deathOfHamster();
+    expect(newAnimal.alive).toEqual(true);
+  });
+
+  it('should check to see if Cat can inherit function from pet with varying property inputs', function() {
+    let newCat= new Cat("Tom");
+    const sum = newCat.returnValue()
+    expect(sum).toEqual(40);
   });
 
 });

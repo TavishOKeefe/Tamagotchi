@@ -1,13 +1,34 @@
 import { Pet } from './../src/pet';
 
 class Hamster extends Pet {
-  constructor(name) {
-    super(name)
+  constructor(name, hunger, sleep, alive, exercise) {
+    super(name, hunger, sleep, alive, exercise)
 
-    this.hunger = 10,
-    this.sleep = 10,
-    this.love = 10,
-    this.sass = 0
+  }
+
+  returnValue(){
+    let totalHamster = (this.hunger + this.sleep + this.exercise);
+    return totalHamster;
+  }
+
+  hamsterSchedule(){
+    super.setSchedule();
+  }
+
+  feedHamster(){
+    super.feedPet();
+  }
+
+  sleepHamster(){
+    super.sleepPet();
+  }
+
+  exerciseHamster(){
+    super.ExercisePet();
+  }
+
+  deathOfHamster(){
+    super.deathOfPet();
   }
 }
 

@@ -1,55 +1,32 @@
-import { Pet } from './../src/pet';
-import { Hamster } from './../src/hamster';
-import { Cat } from './../src/cat';
-import './styles.css';
-import $ from 'jquery';
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 $(document).ready(function(){
   $('.create-pet').submit(function(event){
     event.preventDefault();
     let name = $("#name").val();
     let type = $("#type").val();
+    if (type === 1) {
+      let pet = new Hamster(name);
+      pet.returnValue();
+    }
+    else if (type === 2) {
+      let pet = new Cat(name);
+      pet.returnValue();
+    }
+  console.log(pet);
+  debugger
   const pet = new Pet(name);
   pet.setSchedule();
-  const test2 = 1;
-
-  $("#dead").append(`<div class="pet-output">
-    <h3>Your Pet Details:</h3>
-    <p id="pet-name">${pet.name}</p>
-        <div class="col-md-3">
-          <p id="pet-hunger">Hunger Level ${pet.hunger}</p>
-          <button type="click" name="button" class="btn btn-success" id="feed-pet">Feed Pet</button>
-        </div>
-      </div>`)
-
-  // if (test2 === 1){
-  //   $("#pet-clean").hide();
-  //   $("#pet-exercise").hide();
-  //   $("#pet-sleep").hide();
-  //   $("#pet-love").hide();
-  //   $("#pet-sass").hide();
-  // } else  {
-  //   return "hello";
-  // }
-
   setInterval(() => {
-    const test = 1;
     $(".pet-output").show();
     $("#dead").text(pet.deathOfPet());
     $("#pet-name").text(`${pet.name}`);
-    if (test === 1){
     $("#pet-hunger").text(`Hunger level: ${pet.hunger}`);
     $("#pet-water").html(`Water level: ${pet.water}`);
     $("#pet-waste").html(`Waste level: ${pet.waste}`);
-    } else {
     $("#pet-clean").html(`Clean level: ${pet.clean.toFixed(1)}`);
     $("#pet-exercise").html(`Exercise level: ${pet.exercise}`);
     $("#pet-sleep").html(`Sleep level: ${pet.exercise}`);
     $("#pet-love").html(`Love level: ${pet.exercise}`);
     $("#pet-sass").html(`Sass level: ${pet.exercise}`);
-  }
     if (pet.alive == false) {
       clearInterval();
       $(".pet-output").hide();
