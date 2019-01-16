@@ -15,14 +15,12 @@ $(document).ready(function(){
   pet.setSchedule();
   const test2 = 1;
 
-  $("#dead").append(`<div class="pet-output">
-    <h3>Your Pet Details:</h3>
-    <p id="pet-name">${pet.name}</p>
-        <div class="col-md-3">
-          <p id="pet-hunger">Hunger Level ${pet.hunger}</p>
-          <button type="click" name="button" class="btn btn-success" id="feed-pet">Feed Pet</button>
-        </div>
-      </div>`)
+
+  $("#dead").html("<p> " + pet.name + "</p>");
+  $("#dead").html("<div class='pet-output'><h3>Your Pet Details:</h3><p id='pet-name'>" + pet.name + "</div> <p id='pet-hunger'>Hunger Level " + pet.hunger + "</div></p>");
+      //     <button type="click" name="button" class="btn btn-success" id="feed-pet">Feed Pet</button>
+      //   </div>
+      // </div>");
 
   // if (test2 === 1){
   //   $("#pet-clean").hide();
@@ -34,30 +32,30 @@ $(document).ready(function(){
   //   return "hello";
   // }
 
-  setInterval(() => {
-    const test = 1;
-    $(".pet-output").show();
-    $("#dead").text(pet.deathOfPet());
-    $("#pet-name").text(`${pet.name}`);
-    if (test === 1){
-    $("#pet-hunger").text(`Hunger level: ${pet.hunger}`);
-    $("#pet-water").html(`Water level: ${pet.water}`);
-    $("#pet-waste").html(`Waste level: ${pet.waste}`);
-    } else {
-    $("#pet-clean").html(`Clean level: ${pet.clean.toFixed(1)}`);
-    $("#pet-exercise").html(`Exercise level: ${pet.exercise}`);
-    $("#pet-sleep").html(`Sleep level: ${pet.exercise}`);
-    $("#pet-love").html(`Love level: ${pet.exercise}`);
-    $("#pet-sass").html(`Sass level: ${pet.exercise}`);
-  }
-    if (pet.alive == false) {
-      clearInterval();
-      $(".pet-output").hide();
-    }
-  }, 1000);
-
-
-
+  // setInterval(() => {
+  //   const test = 1;
+  //   $(".pet-output").show();
+  //   $("#dead").text(pet.deathOfPet());
+  //   $("#pet-name").text(`${pet.name}`);
+  //   if (test === 1){
+  //   $("#pet-hunger").text(`Hunger level: ${pet.hunger}`);
+  //   $("#pet-water").html(`Sleep level: ${pet.sleep}`);
+  //   $("#pet-waste").html(`Exercise level: ${pet.exercise}`);
+  //   } else {
+  //   $("#pet-clean").html(`Clean level: ${pet.clean.toFixed(1)}`);
+  //   $("#pet-exercise").html(`Exercise level: ${pet.exercise}`);
+  //   $("#pet-sleep").html(`Sleep level: ${pet.exercise}`);
+  //   $("#pet-love").html(`Love level: ${pet.exercise}`);
+  //   $("#pet-sass").html(`Sass level: ${pet.exercise}`);
+  // }
+  //   if (pet.alive == false) {
+  //     clearInterval();
+  //     $(".pet-output").hide();
+  //   }
+  // }, 1000);
+  //
+  //
+  //
     $('#feed-pet').click(function(){
       pet.feedPet();
     });
